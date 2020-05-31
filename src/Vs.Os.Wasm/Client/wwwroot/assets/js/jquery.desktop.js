@@ -259,20 +259,6 @@ var JQD = (function($, window, document, undefined) {
           $($(this).attr('href')).hide('fast');
         });
 
-        // Show desktop button, ala Windows OS.
-        d.on('mousedown', '#show_desktop', function() {
-          // If any windows are visible, hide all.
-          if ($('div.window:visible').length) {
-            $('div.window').hide();
-          }
-          else {
-            // Otherwise, reveal hidden windows that are open.
-            $('#dock li:visible a').each(function() {
-              $($(this).attr('href')).show();
-            });
-          }
-        });
-
         $('table.data').each(function() {
           // Add zebra striping, ala Mac OS X.
           $(this).find('tbody tr:odd').addClass('zebra');
@@ -350,7 +336,21 @@ var JQD = (function($, window, document, undefined) {
         JQD.util.window_flat();
         win.addClass('window_stack');
       }
-    }
+      },
+      interop: {
+          show_desktop: function () {
+              // If any windows are visible, hide all.
+              if ($('div.window:visible').length) {
+                  $('div.window').hide();
+              }
+              else {
+                  // Otherwise, reveal hidden windows that are open.
+                  $('#dock li:visible a').each(function () {
+                      $($(this).attr('href')).show();
+                  });
+              }
+          }
+      }
   };
 // Pass in jQuery.
 })(jQuery, this, this.document);
