@@ -1,0 +1,15 @@
+{
+  "name": "Virtual Society Desktop",
+  "short_name": "VS Desktop",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#03173d",
+  "icons": [
+    {
+      "src": "logo-256-blue.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ]
+}
