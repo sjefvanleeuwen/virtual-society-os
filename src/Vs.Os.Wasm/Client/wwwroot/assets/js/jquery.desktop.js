@@ -187,13 +187,6 @@ var JQD = (function($, window, document, undefined) {
           }
         });
 
-        // Focus active window.
-        d.on('mousedown', 'div.window', function() {
-          // Bring window to front.
-          JQD.util.window_flat();
-          $(this).addClass('window_stack');
-        });
-
         // Make windows draggable.
         d.on('mouseenter', 'div.window', function() {
           $(this).off('mouseenter').draggable({
@@ -345,6 +338,13 @@ var JQD = (function($, window, document, undefined) {
               // Bring window to front.
               JQD.util.window_flat();
               $(y).addClass('window_stack').show();
+          },
+          focus_window: function (window)
+          {
+              // Focus active window.
+              // Bring window to front.
+              JQD.util.window_flat();
+              $(window).addClass('window_stack');
           }
       }
   };
