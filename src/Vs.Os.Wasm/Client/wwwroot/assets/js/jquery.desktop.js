@@ -163,23 +163,6 @@ var JQD = (function($, window, document, undefined) {
           $(this).addClass('active');
         });
 
-        // Respond to double-click.
-        d.on('dblclick', 'a.icon', function() {
-          // Get the link's target.
-          var x = $(this).attr('href');
-          var y = $(x).find('a').attr('href');
-
-          // Show the taskbar button.
-          if ($(x).is(':hidden')) {
-            $(x).remove().appendTo('#dock');
-            $(x).show('fast');
-          }
-
-          // Bring window to front.
-          JQD.util.window_flat();
-          $(y).addClass('window_stack').show();
-        });
-
         // Make icons draggable.
         d.on('mouseenter', 'a.icon', function() {
           $(this).off('mouseenter').draggable({
@@ -349,6 +332,19 @@ var JQD = (function($, window, document, undefined) {
                       $($(this).attr('href')).show();
                   });
               }
+          },
+          icon_click: function (icon) {
+              // Get the link's target.
+              var x = $(icon).attr('href');
+              var y = $(x).find('a').attr('href');
+              // Show the taskbar button.
+              if ($(x).is(':hidden')) {
+                  $(x).remove().appendTo('#dock');
+                  $(x).show('fast');
+              }
+              // Bring window to front.
+              JQD.util.window_flat();
+              $(y).addClass('window_stack').show();
           }
       }
   };
